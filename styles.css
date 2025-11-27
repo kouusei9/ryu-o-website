@@ -61,7 +61,7 @@ body {
 
 /* 로고 이미지 스타일 */
 .logo-img {
-    height: 100%;
+    height: 140%;
     width: auto;
     /* 로고 이미지에 네온 효과 추가 */
     filter: drop-shadow(0 0 10px #00ffff) drop-shadow(0 0 5px #ff00ff);
