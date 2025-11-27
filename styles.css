@@ -1,0 +1,175 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+    overflow-x: hidden;
+    width: 1440px;
+    margin: 0 auto;
+}
+
+/* Navigation */
+.nav {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 20px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 50;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    gap: 60px;
+    margin-right: 80px;
+}
+
+.nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Hero Section */
+.hero {
+    width: 100%;
+    margin-top: 90px; /* nav 공간 */
+}
+
+.hero-img {
+    width: 100%;
+    display: block;
+}
+
+/* Section Common Style */
+.section {
+    width: 100%;
+    padding: 120px 0;
+    text-align: center;
+    background: url('img/bg-grid.png') repeat-y;
+    background-size: cover;
+}
+
+.section h2 {
+    font-size: 64px;
+    font-weight: 700;
+    margin-bottom: 60px;
+}
+
+.section p {
+    font-size: 28px;
+    line-height: 1.7;
+    font-weight: 400;
+}
+
+/* INTRO */
+.intro {
+    background: url('img/bg-intro.png') no-repeat center top;
+    background-size: cover;
+}
+
+/* Vision */
+.vision {
+    background: url('img/bg-vision.png') no-repeat center top;
+    background-size: cover;
+}
+
+/* Technology */
+.technology {
+    background: url('img/bg-tech.png') no-repeat center top;
+    background-size: cover;
+}
+
+.tech-mode h3 {
+    font-size: 48px;
+    margin-bottom: 30px;
+}
+
+.tech-mode p {
+    font-size: 26px;
+    margin-bottom: 50px;
+}
+
+.tech-images {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+}
+
+.tech-images img {
+    height: 250px;
+    object-fit: contain;
+}
+
+/* Drive Mode */
+.drive-mode {
+    background: url('img/bg-drive.png') no-repeat center top;
+    background-size: cover;
+}
+
+.drive-container {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    margin-top: 50px;
+}
+
+.drive-card {
+    width: 300px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #7dfbff;
+}
+
+.drive-card img {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.drive-card p {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* Smartphone Section */
+.smartphone {
+    background: url('img/bg-phone.png') no-repeat center top;
+    background-size: cover;
+}
+
+.phone-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 120px;
+    margin-top: 40px;
+}
+
+.phone-text {
+    font-size: 28px;
+    line-height: 1.8;
+    width: 500px;
+    text-align: left;
+}
+
+.phone-img {
+    width: 330px;
+    height: auto;
+}
+
+/* Footer Visual */
+.footer-visual img {
+    width: 100%;
+    display: block;
+}
