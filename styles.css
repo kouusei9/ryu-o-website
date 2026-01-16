@@ -309,6 +309,10 @@ body::before {
     text-align: left;
 }
 
+.city-run {
+    margin-bottom: 80px;
+}
+
 /* レスポンシブ: 狭い画面では横並びを縦並びに切替 */
 @media (max-width: 900px) {
     .side-by-side,
