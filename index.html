@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=1440">
     <title>RYU-O</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
@@ -56,21 +57,26 @@
         <h2 class="neon-text">Technology</h2>
 
         <div class="tech-container">
-            <div class="tech-text">
-                <h3 class="tech-title">モード変形</h3>
-                <div class="tech-line"></div>
-                <p>
-                    走行状況に応じ、<br>
-                    将棋をモチーフにしたモードに変形<br>
-                    走行状況に応じたモード変形を実現<br>
-                    運転を日常へ
-                </p>
-            </div>
+            <div class="tech-row">
+                <!-- <div class="tech-left tech-images">
+                    <img src="img/tech1.png" alt="Tech 1">
+                </div> -->
 
-            <div class="tech-images">
-                <img src="img/tech1.png" alt="Tech 1">
-                <img src="img/tech2.png" alt="Tech 2">
-                <img src="img/tech3.png" alt="Tech 3">
+                <div class="tech-text">
+                    <h3 class="tech-title">モード変形</h3>
+                    <div class="tech-line"></div>
+                    <p>
+                        走行状況に応じ、<br>
+                        将棋をモチーフにしたモードに変形
+                        走行状況に応じたモード変形を実現
+                        運転を日常へ
+                    </p>
+                </div>
+
+                <!-- <div class="tech-right tech-images">
+                    <img src="img/tech2.png" alt="Tech 2">
+                    <img src="img/tech3.png" alt="Tech 3">
+                </div> -->
             </div>
         </div>
     </section>
@@ -78,44 +84,63 @@
     <section class="section drive-mode">
         <h2 class="neon-text">Drive Mode</h2>
 
-        <div class="drive-container">
-            <div class="drive-card mode-cyan">
-                <div class="card-icon"><img src="img/mode1.png" alt="Standard"></div>
-                <p>王・標準モード</p>
-                <span class="sub-text">STANDARD MODE</span>
+        <!--横に流れる-->
+        <div class="view-port">
+            <div class="drive-container" id="loop-container">
+                <div class="drive-card mode-cyan" data-img="img/Image1.jpg">
+                    <div class="card-icon"><img src="img/mode1.png" alt="Drone"></div>
+                    <p>桂馬・ドローンモード</p>
+                    <span class="sub-text">DRONE MODE</span>
+                </div>
+                <div class="drive-card mode-purple" data-img="img/Image2.jpg">
+                    <div class="card-icon"><img src="img/mode2.png" alt="Normal"></div>
+                    <p>金将・通常モード</p>
+                    <span class="sub-text">NORMAL MODE</span>
+                </div>
+                <div class="drive-card mode-cyan" data-img="img/Image3.jpg">
+                    <div class="card-icon"><img src="img/mode3.png" alt="High Speed"></div>
+                    <p>香車・高速モード</p>
+                    <span class="sub-text">HIGH SPEED</span>
+                </div>
+                <div class="drive-card mode-purple" data-img="img/Image4.jpg">
+                    <div class="card-icon"><img src="img/mode4.png" alt="Flight"></div>
+                    <p>飛車・飛行モード</p>
+                    <span class="sub-text">FLIGHT MODE</span>
+                </div>
             </div>
+        </div>
 
-            <div class="drive-card mode-magenta">
-                <div class="card-icon"><img src="img/mode2.png" alt="Normal"></div>
-                <p>金・通常モード</p>
-                <span class="sub-text">NORMAL MODE</span>
-            </div>
-
-            <div class="drive-card mode-purple">
-                <div class="card-icon"><img src="img/mode3.png" alt="High Speed"></div>
-                <p>飛・高速モード</p>
-                <span class="sub-text">HIGH SPEED</span>
+        <div id="modal-overlay" class="modal-overlay">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <img id="modal-target-image" src="" alt="拡大画像">
             </div>
         </div>
     </section>
 
     <section class="section smartphone">
-        <h2 class="neon-text">スマホ連携</h2>
-        <div class="tech-line-center"></div>
+        <h2 class="neon-text">Smartphone</h2>
 
-        <div class="phone-wrapper">
-            <div class="phone-text">
-                <p>
-                    専用のスマートフォンアプリによって<br>
-                    <span class="highlight-cyan">ご自身の車を現在地まで</span><br>
-                    呼び出すことができます<br><br>
-                    これにより外出中で<br>
-                    急な悪天候やトラブルの際にも<br>
-                    RYU-Oが駆けつけてくれます
-                </p>
+        <div class="tech-container">
+            <div class="tech-row">
+                
+                <div class="tech-text">
+                    <h3 class="tech-title">スマホ連携</h3>
+                    <div class="tech-line"></div>
+                    <div class="phone-text">
+                        <p>
+                        専用のスマートフォンアプリによって<br>
+                        <span class="highlight-cyan">ご自身の車を現在地まで</span><br>
+                        呼び出すことができます<br><br>
+                        これにより外出中で<br>
+                        急な悪天候やトラブルの際にも<br>
+                        RYU-Oが駆けつけてくれます
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="phone-visual">
-                <img src="img/phone.png" class="phone-img" alt="App Screen">
+            <div class="tech-images">
+                <img src="img/phone.png" alt="Smartphone">
             </div>
         </div>
     </section>

@@ -35,10 +35,31 @@ body::before {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4); /* 黒の半透明 */
-  z-index: -1; /* 背景の上、テキストの下に配置 */
 }
+/* tech-row: テキストと画像を1:1で横並びにするラッパー */
+
+.tech-row {
+    display: flex;
+    width: 100%;
+    gap: 40px;
+    align-items: center;
+}
+.tech-text {
+    flex: 1;
+}
+.tech-images {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
 /* Common Utilities */
-.neon-text {
+.common-utility {
+    width: 100%;
+    max-width: 480px; /* 必要に応じて画像の最大幅を調整 */
     font-family: 'Orbitron', sans-serif;
     text-transform: uppercase;
     text-shadow:
@@ -47,6 +68,7 @@ body::before {
         0 0 20px rgba(0, 255, 255, 0.3);
     letter-spacing: 2px;
 }
+
 
 /* Side-by-side helper: 文字の隣に画像を配置する汎用クラス */
 .side-by-side {
@@ -151,6 +173,93 @@ body::before {
     color: #fff;
 }
 
+
+/* 横に流れるコンテンツ*/
+.view-port {
+    overflow: hidden;
+    width: 100%;
+    padding: 20px 0;
+    margin-right: 20px;
+}
+
+.drive-container {
+    display: flex;
+    width: max-content;
+}
+
+.drive-container:hover {
+    animation-play-state: paused; /* マウスが乗ったら停止 */
+    cursor: pointer;             /* 指マークにするとクリックできることが伝わりやすい */
+}
+
+/* アニメーション自体の設定 */
+.is-animation {
+    animation: loop-scroll 20s linear infinite;
+}
+
+@keyframes loop-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); } /* JSで2倍に増やすので-50%で完結 */
+}
+
+.drive-card {
+    flex-shrink: 0;
+    width: 200px;
+    margin: 0 10px;
+    /* ここにカードのデザイン（背景色や枠線など）を追加 */
+}
+
+/* ポップアップ外枠（背景：画面全体を覆う） */
+.modal-overlay {
+    display: none; /* 初期状態は非表示 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85); /* 少し暗めの背景 */
+    z-index: 9999; /* 一番手前に表示 */
+    
+    /* 真ん中に配置するための設定 */
+    justify-content: center;
+    align-items: center;
+}
+
+/* ポップアップの中身（ここを80%にする） */
+.modal-content {
+    position: relative;
+    width: 80%;  /* 画面横幅の80% */
+    height: 80%; /* 画面高さの80% */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    
+    /* 中の画像を中央に寄せる */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ポップアップ内の画像 */
+.modal-content img {
+    max-width: 100%;  /* 枠からはみ出さない */
+    max-height: 100%; /* 枠からはみ出さない */
+    object-fit: contain; /* 縦横比を維持して枠内に収める */
+    border-radius: 8px;
+}
+
+/* 閉じるボタンの位置調整 */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 40px;
+    color: #fff;
+    cursor: pointer;
+    line-height: 1;
+}
+
 /* 可読性のためのコンテンツボックススタイル */
 .content-box {
     max-width: 800px;
@@ -188,8 +297,14 @@ body::before {
     flex-wrap: wrap; /* 小さい画面で折り返す */
     justify-content: center;
     align-items: flex-start;
+    background: rgba(0, 0, 10, 0.6);
+    padding: 50px;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+    backdrop-filter: blur(3px);
+    border-radius: 10px;
     gap: 0px;
-    max-width: 1200px;
+    max-width: 800px; /* 広めにして中央のテキストを広げられるように */
     margin: 0 auto;
     text-align: left;
 }
@@ -210,10 +325,76 @@ body::before {
     .tech-images img {
         width: 100%;
     }
+    .tech-row {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+    .tech-left,
+    .tech-right {
+        flex: none;
+        width: 80%;
+    }
+    .tech-left img,
+    .tech-right img {
+        width: 100%;
+        transform: none; /* モバイルでは重なり解除 */
+        position: static;
+    }
+    .tech-text {
+        max-width: 100%;
+        padding: 24px;
+        background: rgba(0,0,0,0.6);
+    }
+}
+.tech-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+    position: relative; /* 重なりの基準 */
 }
 
+.tech-left,
+.tech-right {
+    flex: 0 0 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: visible; /* 画像を外にはみ出させる */
+}
+
+.tech-left img,
+.tech-right img {
+    width: 140%; /* 大きめにして中央へはみ出させる */
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 12px rgba(0,255,255,0.45));
+    position: relative;
+    z-index: 1; /* テキストより下に配置 */
+    transition: transform 0.35s, filter 0.35s;
+}
+.tech-left img { transform: translateX(22px); }
+.tech-right img { transform: translateX(-22px); }
+
 .tech-text {
-    flex: 1;
+    flex: 1 1 560px; /* 中央を広く取る */
+    max-width: 720px;
+    padding: 40px 48px;
+    text-align: center;
+    position: relative;
+    z-index: 2; /* 画像より前面に表示 */
+}
+
+.phone-text {
+    flex: 1 1 560px; /* 中央を広く取る */
+    max-width: 720px;
+    padding: 0px 48px 0px 0px;
+    text-align: center;
+    position: relative;
+    z-index: 2; /* 画像より前面に表示 */
+    margin-left: -60px; /* 左側に移動 */
 }
 
 .tech-title {
@@ -232,20 +413,22 @@ body::before {
 
 .tech-images {
     flex: 1;
-    display: flex;
+    position: absolute;
+    right: 0; /* 右側に配置 */
+    top: 60%; /* 垂直中央 */
+    transform: translateY(-50%); /* 上下中央に調整 */
     flex-direction: column;
     gap: 30px;
-    position: relative;
+    /* position: relative; */
 }
 
 .tech-images img {
-    width: 90%;
-    object-fit: contain;
+    width: 100%;         /* 親要素の幅いっぱいに広げる */
+    max-width: 200px;    /* ただし、400px以上には巨大化させない */
+    height: auto;        /* 高さは自動で比率を維持 */
+    display: block;      /* 画像の下の微妙な隙間を消す */
+    margin: 30px auto;
     filter: drop-shadow(0 0 8px rgba(0,255,255,0.5));
-    transition: transform 0.3s;
-}
-.tech-images img:hover {
-    transform: scale(1.05);
 }
 
 /* Drive Mode */
@@ -334,7 +517,7 @@ body::before {
 }
 
 .phone-text {
-    text-align: left;
+    text-align: center;
     font-family: 'DotGothic16', sans-serif;
 }
 
@@ -347,7 +530,7 @@ body::before {
 .phone-img {
     width: 320px;
     filter: drop-shadow(0 0 30px rgba(0, 150, 255, 0.6));
-    transform: rotate(-5deg);
+    /* transform: rotate(-5deg); */
 }
 
 /* Footer Visual */
