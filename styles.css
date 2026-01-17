@@ -11,11 +11,12 @@ body {
     /*background-color: #050510;  画像読み込み前のデフォルト色（非常に暗い紺色） */
     
     /* ▼▼▼ 背景画像を適用（背景ファイル名を確認してください） ▼▼▼ */
-    background-image: url('img/backimage.png');
+    background-image: url('img/bg.png');
     background-color: rgba(0, 0, 0, 0.5); /* 黒の半透明 */
     background-repeat: repeat-y; /* 縦方向に繰り返す */
     background-position: center top; /* 中央上部を基準 */
     background-size: 100% auto; /* 幅をコンテナに合わせて拡大縮小 */
+    background-attachment: fixed; /* 背景を固定 */
     /* ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ */
 
     color: #fff;
@@ -142,10 +143,9 @@ body::before {
 /* Hero Section */
 .hero {
     width: 100%;
-    margin-top: 0; /* ページトップに配置 */
+    margin-top: 82px; /* ナビゲーションの高さ分の余白 */
     position: relative;
     top: 0;
-    /* 必要に応じてナビゲーションの高さ分だけ余白を追加してください（例: padding-top: 80px;） */
 }
 
 .hero-img {
@@ -518,6 +518,7 @@ body::before {
     justify-content: center;
     align-items: center;
     gap: 100px;
+    flex-wrap: wrap;
 }
 
 .phone-text {
