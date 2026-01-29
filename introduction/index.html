@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RYU-O | 未来を駆ける、将棋モビリティ</title>
+  <meta name="description" content="伝統×テクノロジー。将棋の駒をモチーフにしたモビリティ企画 RYU-O の展示サイト。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+  <style>
+    :root{
+      --bg:#070910; --ink:#E6F1FF; --muted:#9AA6B2; --neon-pink:#ff2fb3; --neon-cyan:#3cf7ff; --accent:#9af5ff;
+      --card:#0C111Bcc; --shadow:0 10px 30px rgba(0,0,0,.45); --max:1200px;
+      --glow:0 0 16px rgba(60,247,255,.6),0 0 40px rgba(255,47,179,.25);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; background:radial-gradient(1200px 600px at 50% -100px, rgba(255,47,179,.2), transparent 60%), var(--bg); color:var(--ink); font-family:"Noto Sans JP",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; letter-spacing:.02em; overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 24px}
+
+    /* ===== Hero ===== */
+    .hero{position:relative; min-height:100svh; display:grid; place-items:center; overflow:hidden}
+    .hero__bg{position:absolute; inset:0; background:linear-gradient(to top, rgba(255,47,179,.25), transparent 45%), url('assets/img/hero.jpg') center/cover no-repeat; filter:saturate(1.05) contrast(1.05)}
+    .scanlines{position:absolute; inset:0; background-image:repeating-linear-gradient(to bottom, rgba(255,255,255,.05) 0 1px, transparent 1px 3px); mix-blend-mode: overlay; pointer-events:none}
+    .grid-floor{position:absolute; inset:auto 0 0 0; height:48svh; background:linear-gradient(transparent, rgba(7,9,16,.6)), radial-gradient(700px 100px at 50% 0, rgba(60,247,255,.35), transparent 60%), repeating-linear-gradient(90deg, transparent 0 98px, rgba(60,247,255,.25) 98px 100px), repeating-linear-gradient(0deg, transparent 0 98px, rgba(60,247,255,.2) 98px 100px); box-shadow:inset 0 40px 60px rgba(0,0,0,.6); transform-origin:center bottom}
+    .hero__title{position:relative; z-index:2; text-align:center; margin-top:-6svh; text-shadow:0 2px 0 rgba(0,0,0,.6), var(--glow)}
+    .logo{font-family:"Bebas Neue", system-ui; font-size:clamp(56px,9vw,120px); letter-spacing:.05em}
+    .tag{margin-top:8px; font-weight:700; color:var(--accent); text-shadow:var(--glow)}
+    .cta{margin-top:20px; display:inline-flex; gap:10px}
+    .btn{padding:10px 16px; border-radius:12px; border:1px solid rgba(154,245,255,.2); background:#0b0f18b3; box-shadow:var(--shadow); font-weight:700}
+
+    /* Car sprites */
+    .cars{position:absolute; inset:0; pointer-events:none}
+    .car{position:absolute; width:min(22vw, 320px); filter:drop-shadow(0 10px 20px rgba(0,0,0,.8)); transform:translate3d(0,0,0) scale(.9); opacity:.9}
+    .car--kin{ left:58%; bottom:14%}
+    .car--ou { left:38%; bottom:16%}
+    .car--kyo{ left:18%; bottom:12%}
+    .car--kei{ left:8%;  bottom:20%; width:min(18vw,260px)}
+    .car--hi { right:6%; bottom:26%; width:min(18vw,260px)}
+
+    /* ===== Map with hotspots ===== */
+    .map{position:relative; min-height:120svh; display:grid; place-items:center; text-align:center; background:linear-gradient(180deg, rgba(10,15,25,0) 0%, rgba(10,15,25,1) 30%), url('assets/img/kyoto-map.jpg') center/cover no-repeat; border-top:1px solid rgba(154,245,255,.18)}
+    .map h2{font-family:"Bebas Neue"; letter-spacing:.2em; font-size:clamp(24px,3.5vw,38px); color:var(--accent); text-shadow:var(--glow)}
+    .map p{max-width:720px; color:var(--muted); margin:8px auto 28px}
+    .hotspots{position:absolute; inset:0}
+    .hotspot{position:absolute; width:28px; height:28px; border-radius:50%; background:radial-gradient(circle at 30% 30%, var(--neon-cyan), var(--neon-pink)); box-shadow:0 0 12px rgba(60,247,255,.85), 0 0 22px rgba(255,47,179,.6); cursor:pointer; transform:translate(-50%,-50%)}
+    .hotspot:after{content:""; position:absolute; inset:-8px; border-radius:50%; border:1px solid rgba(154,245,255,.5); animation:pulse 1.8s infinite}
+    @keyframes pulse{0%{transform:scale(.9)}50%{transform:scale(1.15)}100%{transform:scale(.9)}}
+
+    /* ===== Sections ===== */
+    .divider{height:1px; background:linear-gradient(90deg, transparent, rgba(154,245,255,.3), transparent)}
+    .section{padding:100px 0; background:linear-gradient(180deg, rgba(10,15,25,.92), rgba(10,15,25,1)); border-top:1px solid rgba(154,245,255,.1)}
+    .section h3{font-size:clamp(22px,3vw,30px); margin:0 0 24px}
+
+    /* Feature cards */
+    .cards{display:grid; grid-template-columns:repeat(12,1fr); gap:20px}
+    .card{grid-column:span 12; background:var(--card); border:1px solid rgba(154,245,255,.15); border-radius:18px; padding:20px; box-shadow:var(--shadow); position:relative; overflow:hidden}
+    .card__media{aspect-ratio:16/9; background:#0b0f18; border-radius:12px; overflow:hidden; display:grid; place-items:center; margin-bottom:14px}
+    .card__media img{width:100%; height:100%; object-fit:contain; filter:drop-shadow(0 8px 20px rgba(0,0,0,.7))}
+    .badge{display:inline-flex; align-items:center; gap:8px; font-weight:700; color:var(--accent)}
+    .badge span{font-family:"Bebas Neue"; letter-spacing:.06em; font-size:22px}
+    .spec{color:var(--muted); font-size:14px}
+    @media(min-width:880px){.card{grid-column:span 6}}
+    @media(min-width:1200px){.card{grid-column:span 4}}
+
+    /* Team */
+    .team{display:grid; grid-template-columns:repeat(12,1fr); gap:20px}
+    .member{grid-column:span 12; background:var(--card); border:1px solid rgba(154,245,255,.15); border-radius:16px; padding:18px; display:flex; gap:14px; align-items:center}
+    .member img{width:64px; height:64px; border-radius:12px; object-fit:cover}
+    .member h4{margin:0 0 4px}
+    .role{color:var(--muted); font-size:14px}
+    @media(min-width:820px){.member{grid-column:span 6}}
+
+    /* Budget table */
+    .budget{width:100%; border-collapse:separate; border-spacing:0 8px}
+    .budget th{color:#A7E8F5; text-align:left; font-weight:700; padding:10px 12px}
+    .budget td{padding:12px; background:var(--card); border:1px solid rgba(154,245,255,.15)}
+    .budget tr td:first-child{border-radius:12px 0 0 12px}
+    .budget tr td:last-child{border-radius:0 12px 12px 0; text-align:right}
+
+    /* Modal for hotspot */
+    .modal{position:fixed; inset:0; display:none; place-items:center; background:rgba(0,0,0,.55); backdrop-filter:blur(3px); z-index:999}
+    .modal__card{width:min(860px, 92vw); background:#0c111b; border:1px solid rgba(154,245,255,.2); border-radius:18px; padding:22px; box-shadow:0 30px 60px rgba(0,0,0,.5)}
+    .modal__title{font-family:"Bebas Neue"; letter-spacing:.08em; font-size:28px; color:var(--accent)}
+    .modal__body{color:var(--muted)}
+    .modal__close{margin-top:14px; display:inline-flex; padding:10px 14px; border:1px solid rgba(154,245,255,.25); border-radius:10px; cursor:pointer}
+
+    footer{padding:60px 0 100px; text-align:center; color:#A7B5C6; background:linear-gradient(180deg, rgba(10,15,25,1), #06080e)}
+  </style>
+</head>
+<body>
+  <!-- ================= HERO ================= -->
+  <header class="hero" id="home">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="grid-floor" aria-hidden="true"></div>
+    <div class="scanlines" aria-hidden="true"></div>
+
+    <div class="hero__title wrap">
+      <div class="logo">RYU‑O</div>
+      <div class="tag">未来を駆ける、将棋モビリティ</div>
+      <div class="cta">
+        <a class="btn" href="#overview">企画概要</a>
+        <a class="btn" href="#features">機体ラインアップ</a>
+      </div>
+    </div>
+
+    <!-- Car sprites (透明PNGを配置) -->
+    <div class="cars" aria-hidden="true">
+      <img class="car car--kyo" src="assets/img/car-kyo.png" alt="香車 / KYOSHA" />
+      <img class="car car--ou"  src="assets/img/car-ou.png"  alt="王 / OU" />
+      <img class="car car--kin" src="assets/img/car-kin.png" alt="金 / KIN" />
+      <img class="car car--kei" src="assets/img/car-kei.png" alt="桂馬 / KEIMA" />
+      <img class="car car--hi"  src="assets/img/car-hi.png"  alt="飛 / HI" />
+    </div>
+  </header>
+
+  <hr class="divider"/>
+
+  <!-- =============== MAP + HOTSPOTS =============== -->
+  <section class="map" id="map">
+    <div class="wrap">
+      <h2>KYOTO</h2>
+      <p>舞台は京都。古都のグリッド都市に、量子航路とAI交通制御を重ねる。地図の <strong>発光する小さな家</strong> をクリックすると、各エリアのデモやアニメーションが開きます。</p>
+    </div>
+    <!-- hotspots (百分比で配置) 例：x%, y% -->
+    <div class="hotspots" aria-hidden="false">
+      <button class="hotspot" style="left:52%; top:58%" data-spot="central"> </button>
+      <button class="hotspot" style="left:34%; top:40%" data-spot="north"> </button>
+      <button class="hotspot" style="left:74%; top:72%" data-spot="east"> </button>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- =============== OVERVIEW =============== -->
+  <section class="section" id="overview">
+    <div class="wrap">
+      <h3>企画概要</h3>
+      <p>RYU‑O は、将棋の駒が持つ動きのロジックをモビリティに移植し、都市交通の直感的インタラクションを再設計するコンセプトです。伝統意匠とネオンのビジュアル言語、そしてAI航路制御を統合し、人と街の関係を再定義します。</p>
+      <p class="spec">参考情報：自動運転レベル（SAE 0–5）、各国動向（米・中・独・日）や歴史的マイルストーン（GM の誘導式、スタンフォード、DARPA、Waymo など）を技術背景と位置づけ、社会実装を見据えた体験設計を行う。</p>
+    </div>
+  </section>
+
+  <!-- =============== FEATURES =============== -->
+  <section class="section" id="features">
+    <div class="wrap">
+      <h3>機体ラインアップ</h3>
+      <div class="cards">
+        <article class="card reveal">
+          <div class="card__media"><img src="assets/img/car-kin.png" alt="KIN"/></div>
+          <div class="badge"><span>KIN</span> 金 — 運転モード</div>
+          <p class="spec">ユーザー搭乗の手動/半自動操縦。都心部の短距離移動に最適化されたハンドリングと安全制御。</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__media"><img src="assets/img/car-ou.png" alt="OU"/></div>
+          <div class="badge"><span>OU</span> 王 — 駐車/統括モード</div>
+          <p class="spec">フリートの中枢AI。各機体の行動と電力配分を最適化し、都市ネットワークと同期。</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__media"><img src="assets/img/car-kyo.png" alt="KYOSHA"/></div>
+          <div class="badge"><span>KYOSHA</span> 香車 — 直進ブースト</div>
+          <p class="spec">無制限の前進航路を高速維持。視界内の直線ルートを自動抽出し、瞬時に加速。</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__media"><img src="assets/img/car-kei.png" alt="KEIMA"/></div>
+          <div class="badge"><span>KEIMA</span> 桂馬 — 短距離飛行</div>
+          <p class="spec">垂直離陸・障害物越えのショートホップ。立体交差の多い市街地で機動性を発揮。</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__media"><img src="assets/img/car-hi.png" alt="HI"/></div>
+          <div class="badge"><span>HI</span> 飛 — 航空巡航</div>
+          <p class="spec">中距離の空路巡航。都市間連絡や物流支援に対応し、静音かつ高効率。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== TEAM =============== -->
+  <section class="section" id="team">
+    <div class="wrap">
+      <h3>プロジェクトメンバー</h3>
+      <div class="team">
+        <div class="member reveal">
+          <img src="assets/img/member-1.jpg" alt="PM"/>
+          <div>
+            <h4>Project Lead</h4>
+            <div class="role">クリエイティブディレクション / 情報設計 / アニメーション</div>
+          </div>
+        </div>
+        <div class="member reveal">
+          <img src="assets/img/member-2.jpg" alt="Design"/>
+          <div>
+            <h4>Design Team</h4>
+            <div class="role">ビジュアルデザイン / UI / 3D モック</div>
+          </div>
+        </div>
+        <div class="member reveal">
+          <img src="assets/img/member-3.jpg" alt="Dev"/>
+          <div>
+            <h4>Dev Team</h4>
+            <div class="role">フロントエンド実装 / GSAP / Three.js</div>
+          </div>
+        </div>
+        <div class="member reveal">
+          <img src="assets/img/member-4.jpg" alt="Research"/>
+          <div>
+            <h4>Research</h4>
+            <div class="role">自動運転動向調査 / ユースケース検証</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== BUDGET =============== -->
+  <section class="section" id="budget">
+    <div class="wrap">
+      <h3>想定予算（概算）</h3>
+      <table class="budget">
+        <thead>
+          <tr><th>項目</th><th>内容</th><th>金額（JPY）</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>デザイン/アート</td><td>キービジュアル、車体レンダ、地図生成</td><td>¥300,000</td></tr>
+          <tr><td>フロントエンド</td><td>GSAP/ScrollTrigger、ホットスポット/モーダル、レスポンシブ</td><td>¥350,000</td></tr>
+          <tr><td>3D/モーション</td><td>簡易3D視差・発光演出・トレイル</td><td>¥200,000</td></tr>
+          <tr><td>コピー/翻訳</td><td>日/中/英テキスト整備</td><td>¥80,000</td></tr>
+          <tr><td>検証/調整</td><td>パフォーマンス最適化、アクセシビリティ</td><td>¥70,000</td></tr>
+          <tr><td><strong>合計</strong></td><td></td><td><strong>¥1,000,000</strong></td></tr>
+        </tbody>
+      </table>
+      <p class="spec">※ 構成・ページ数・追加演出により変動します。</p>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 RYU‑O Mobility Project — GORDENLIGHT Creative Division
+  </footer>
+
+  <!-- =============== INTERACTIONS =============== -->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const { gsap, ScrollTrigger } = window; gsap.registerPlugin(ScrollTrigger);
+
+      // ===== 1) CAR LAUNCH =====
+      const tl = gsap.timeline({
+        scrollTrigger: { trigger: '.hero', start: 'top top', end: '+=1200', scrub: true, pin: true }
+      });
+      tl.to('.grid-floor', { scaleY: 1.15, transformOrigin: 'center bottom', ease: 'none' }, 0);
+      const cars = [
+        { sel: '.car--ou',  x: 0,   y: -900, s: 1.9, r: 2 },
+        { sel: '.car--kin', x: 220, y: -820, s: 1.8, r: -3 },
+        { sel: '.car--kyo', x: -260,y: -760, s: 1.7, r: 3 },
+        { sel: '.car--kei', x: -120,y: -700, s: 1.6, r: -6 },
+        { sel: '.car--hi',  x: 180, y: -680, s: 1.5, r: 5 },
+      ];
+      cars.forEach((c,i)=> tl.to(c.sel, { x:c.x, y:c.y, scale:c.s, rotate:c.r, filter:'drop-shadow(0 30px 60px rgba(0,0,0,.9))', ease: 'power3.inOut' }, 0.08*i));
+      tl.to('.hero__title', { y: -120, opacity: 0.0, ease: 'power1.out' }, 0.1);
+
+      // ===== 2) REVEAL on scroll =====
+      gsap.utils.toArray('.reveal').forEach((el) => {
+        gsap.from(el, { scrollTrigger: { trigger: el, start: 'top 80%' }, y: 30, opacity: 0, duration: .8, ease: 'power2.out' });
+      });
+
+      // ===== 3) HOTSPOT MODALS =====
+      const copy = {
+        central: {
+          title: '中央区画 — スマートハブ',
+          body: '集配・乗換・エネルギー補給の複合ノード。金(KIN)の手動/半自動と王(OU)の統括AIが連携して需要を捌く。'
+        },
+        north: {
+          title: '北エリア — 高低差ルート',
+          body: '桂馬(KEI)の短距離飛行で立体交差をまたぎ、香車(KYOSHA)の直進ブーストで幹線を維持。'
+        },
+        east: {
+          title: '東エリア — 空路回廊',
+          body: '飛(HI)の静音巡航で医療/緊急物資を中距離搬送。夜間は航路ライトが自動点灯。'
+        }
+      };
+
+      const modal = document.createElement('div');
+      modal.className = 'modal';
+      modal.innerHTML = `<div class="modal__card"><div class="modal__title"></div><div class="modal__body"></div><button class="modal__close">閉じる</button></div>`;
+      document.body.appendChild(modal);
+      const titleEl = modal.querySelector('.modal__title');
+      const bodyEl = modal.querySelector('.modal__body');
+
+      const openModal = (key) => {
+        const c = copy[key]; if(!c) return;
+        titleEl.textContent = c.title; bodyEl.textContent = c.body;
+        modal.style.display = 'grid';
+        gsap.fromTo('.modal__card', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: .35, ease: 'power2.out' });
+      };
+      const closeModal = () => { gsap.to('.modal__card', { y: 10, opacity: 0, duration:.2, onComplete:()=> modal.style.display='none' }); };
+      modal.querySelector('.modal__close').addEventListener('click', closeModal);
+      modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
+
+      document.querySelectorAll('.hotspot').forEach(h => {
+        h.addEventListener('click', ()=>{
+          // クリック時の小さな噴射演出
+          gsap.fromTo(h, { scale: 1 }, { scale: 1.25, duration: .12, yoyo: true, repeat: 1, ease: 'power1.inOut' });
+          openModal(h.dataset.spot);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
