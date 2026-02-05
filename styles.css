@@ -435,12 +435,10 @@ body::before {
     filter: drop-shadow(0 0 8px rgba(0,255,255,0.5));
 }
 
-/* Drive Mode */
-.drive-container {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin-top: 60px;
+.view-port {
+    width: 100%;
+    padding: 20px 0;
+    margin-top: 50px;
 }
 
 .drive-card {
