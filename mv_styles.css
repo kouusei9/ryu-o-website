@@ -1,0 +1,80 @@
+/* mv_styles.css
+	 movie.html 専用のスタイル。styles.css は編集せず、こちらに上書きルールを追加してください。 */
+
+/* ビデオと説明を左右2カラムに配置 */
+
+/* 親コンテナを左右2カラムにする（説明=左、動画=右） */
+.content {
+	display: flex;
+	align-items: center;
+	gap: 40px;
+}
+
+/* video-section を右側に配置 */
+.video-section {
+	order: 2;
+	flex: 1 1 50%;
+	display: flex;
+	align-items: center;
+	gap: 40px;
+	padding: 32px 24px;
+}
+
+.description {
+	order: 1;
+	flex: 1 1 50%;
+	padding: 20px 24px 20px 0;
+	color: #e6f7ff;
+}
+
+.video-wrapper {
+	flex: 1 1 100%;
+	display: flex;
+	justify-content: flex-end; /* 右寄せして右半分に動画を置く */
+	align-items: center;
+}
+
+/* 縦長動画（1080x1920）向け: 切り抜かれないように表示領域内に全体を収める */
+.intro-video {
+	width: auto;
+	max-width: 48vw;   /* 画面幅の右半分程度に制限 */
+	max-height: 80vh;  /* ヘッダ等を考慮して縦サイズを制限 */
+	object-fit: contain;       /* 全体像が見えるように縮小して表示 */
+	object-position: left center; /* ビデオ内の表示位置を左寄せ（必要に応じて調整） */
+	border-radius: 8px;
+	box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+	background: #000;
+}
+
+.video-caption {
+	text-align: right;
+	margin-top: 12px;
+	color: #cfdfe6;
+	font-size: 14px;
+}
+
+/* レスポンシブ: 狭い画面では縦並びに切替 */
+@media (max-width: 900px) {
+	.content { flex-direction: column; }
+	.video-section {
+		flex-direction: column;
+		padding: 20px;
+	}
+	.video-wrapper {
+		justify-content: center;
+		width: 100%;
+	}
+	.description {
+		order: 2;
+		width: 100%;
+		padding: 16px 0 0 0;
+		text-align: center;
+	}
+	.intro-video {
+		max-width: 100%;
+		max-height: 60vh;
+		object-position: center center;
+	}
+	.video-caption { text-align: center; }
+}
+
