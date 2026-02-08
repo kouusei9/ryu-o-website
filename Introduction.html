@@ -37,6 +37,7 @@
     <h3 style="font-family: 'Bebas Neue'; font-size: clamp(2.5rem, 5vw, 3.8rem); letter-spacing: 8px; color: var(--neon-cyan); margin-bottom: 60px; text-shadow: 0 0 20px rgba(60,247,255,0.3);">
       企画紹介
     </h3>
+
     
     <div class="overview-carousel">
       <div class="carousel-container" style="background: rgba(12, 17, 27, 0.95); border: 1px solid rgba(154,245,255,0.15); box-shadow: 0 20px 50px rgba(0,0,0,0.6);">
@@ -226,11 +227,21 @@
     }
 
     .slide-text-large {
-      font-size: 1.05rem;
-      line-height: 1.7;
-      color: rgba(255,255,255,0.85);
-      margin: 0;
+      max-width:900px;
+    margin:0 auto;     /* 关键 */
+    text-align:center; /* 文字居中 */
     }
+    :root{
+  --neon-cyan:#3cf7ff;
+}
+.section-title{
+  font-family:'Bebas Neue', sans-serif;
+  font-size:clamp(2.5rem, 5vw, 3.8rem);
+  letter-spacing:8px;
+  color:var(--neon-cyan);
+  margin-bottom:60px;
+  text-shadow:0 0 20px rgba(60,247,255,0.3);
+}
     </style>
     </script>
 
