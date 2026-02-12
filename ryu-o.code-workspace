@@ -1,0 +1,37 @@
+{
+	"folders": [
+		{
+			"path": "../../../../../xampp/htdocs/01_jquery_1/01_jquery_1"
+		},
+		{
+			"path": "../../../../../xampp/htdocs/02_jquery_2"
+		},
+		{
+			"path": "../../../../../xampp/htdocs/03_jquery_3"
+		},
+		{
+			"path": "../../../../../xampp/htdocs/04_jquery_4/04_jquery_4"
+		},
+		{
+			"path": "../../../../../xampp/htdocs/05_jquery_animation"
+		},
+		{
+			"path": "../../../../../xampp/htdocs/06_jquery_menu"
+		},
+		{
+			"path": "../../../../../xampp/htdocs/07_jquery_image/07_jquery_image"
+		},
+		{
+			"path": "../../../../../xampp/htdocs/js06_​15_日下部孝宏"
+		},
+		{
+			"path": "../../../../../xampp/htdocs/08_jquery_parallax/08_jquery_parallax"
+		},
+		{
+			"path": "../../../../../xampp/htdocs/09_api_1/09_api_1"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "09_api_1"
+	}
+}
