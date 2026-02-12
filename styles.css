@@ -35,6 +35,8 @@ body::before {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4); /* 黒の半透明 */
+  pointer-events: none; 
+  z-index: 0;
 }
 /* tech-row: テキストと画像を1:1で横並びにするラッパー */
 
@@ -421,7 +423,7 @@ body::before {
     position: absolute;
     right: 0; /* 右側に配置 */
     top: 60%; /* 垂直中央 */
-    transform: translateY(-50%); /* 上下中央に調整 */
+    transform: translateY(-20%); /* 上下中央に調整 */
     flex-direction: column;
     gap: 30px;
     /* position: relative; */
@@ -429,7 +431,7 @@ body::before {
 
 .tech-images img {
     width: 100%;         /* 親要素の幅いっぱいに広げる */
-    max-width: 200px;    /* ただし、400px以上には巨大化させない */
+    max-width: 300px;    /* ただし、400px以上には巨大化させない */
     height: auto;        /* 高さは自動で比率を維持 */
     display: block;      /* 画像の下の微妙な隙間を消す */
     margin: 30px auto;
@@ -541,21 +543,35 @@ body::before {
 footer {
     width: 100%;
     background-color: rgba(0, 0, 0, 0.7); /* opacityの代わりにrgbaを使う */;
-    position: relative;
-    padding: 30px 20px 0px 20px;
-    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    padding: 25px 10px 10px;
 }
 .footer-logo {
     display: flex;
     align-items: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-left: 50px;
+    width: 130px;
     height: 30px;
-    margin-bottom: 20px;
 }
 
 .footer-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0 1.5em;
+    list-style-type: none;
     margin-bottom: 20px;
+    padding: .5em;
+    z-index: 100;
 }
-
+/* .footer-link{
+    color: #fff;
+    font-weight: 200;
+    text-decoration: none;
+} */
 .footer-nav ul {
     display: flex;
     justify-content: center;
@@ -571,4 +587,15 @@ footer {
     font-weight: 700;
     letter-spacing: 1px;
     transition: 0.3s;
+}
+.footer-nav ul li a:hover {
+    color: #00ffff;
+    text-shadow: 0 0 8px #00ffff;
+}
+.copylight {
+    font-size: 14px;
+    color: #ccc;
+    margin-right: 50px;
+    margin-bottom: 10px;
+    text-align: right;
 }
