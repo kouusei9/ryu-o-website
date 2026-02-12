@@ -11,7 +11,7 @@ body {
     /*background-color: #050510;  画像読み込み前のデフォルト色（非常に暗い紺色） */
     
     /* ▼▼▼ 背景画像を適用（背景ファイル名を確認してください） ▼▼▼ */
-    background-image: url('img/backimage.png');
+    background-image: url('img/bg.png');
     background-color: rgba(0, 0, 0, 0.5); /* 黒の半透明 */
     background-repeat: repeat-y; /* 縦方向に繰り返す */
     background-position: center top; /* 中央上部を基準 */
@@ -93,6 +93,7 @@ body::before {
     width: 100%;
     max-width: 1440px; /* コンテナ幅に合わせて中央揃え */
     padding: 25px 50px;
+    font-family: 'Orbitron', sans-serif;
     position: fixed;
     top: 0;
     z-index: 100;
@@ -536,13 +537,38 @@ body::before {
 }
 
 /* Footer Visual */
-.footer-visual {
-    margin-top: 100px;
-}
-.footer-visual img {
+
+footer {
     width: 100%;
-    display: block;
-    /* 下部画像が背景と自然に混ざるようにマスク処理 */
-    mask-image: linear-gradient(to top, black 80%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to top, black 80%, transparent 100%);
+    background-color: rgba(0, 0, 0, 0.7); /* opacityの代わりにrgbaを使う */;
+    position: relative;
+    padding: 30px 20px 0px 20px;
+    z-index: 10;
+}
+.footer-logo {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+.footer-nav {
+    margin-bottom: 20px;
+}
+
+.footer-nav ul {
+    display: flex;
+    justify-content: center;
+    font-family: 'Orbitron', sans-serif;
+    color: #fff;
+    gap: 30px;
+    list-style: none!important;
+}
+.footer-nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: 0.3s;
 }
