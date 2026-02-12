@@ -1,10 +1,5 @@
 @charset "UTF-8";
 
-/* Performance Optimizations */
-html {
-    scroll-behavior: smooth;
-}
-
 /* Reset */
 * {
     margin: 0;
@@ -21,7 +16,6 @@ body {
     background-repeat: repeat-y; /* 縦方向に繰り返す */
     background-position: center top; /* 中央上部を基準 */
     background-size: 100% auto; /* 幅をコンテナに合わせて拡大縮小 */
-    background-attachment: fixed; /* 背景を固定 */
     /* ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ */
 
     color: #fff;
@@ -32,8 +26,6 @@ body {
     max-width: 1440px; /* 最大幅を指定してレイアウトを崩さない */
     margin: 0 auto;
     position: relative;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 body::before {
   content: "";
@@ -101,6 +93,7 @@ body::before {
     width: 100%;
     max-width: 1440px; /* コンテナ幅に合わせて中央揃え */
     padding: 25px 50px;
+    font-family: 'Orbitron', sans-serif;
     position: fixed;
     top: 0;
     z-index: 100;
@@ -150,11 +143,10 @@ body::before {
 /* Hero Section */
 .hero {
     width: 100%;
-    margin-top: 82px; /* ナビゲーションの高さ分の余白 */
+    margin-top: 0; /* ページトップに配置 */
     position: relative;
     top: 0;
-    min-height: 100vh;
-    overflow: hidden;
+    /* 必要に応じてナビゲーションの高さ分だけ余白を追加してください（例: padding-top: 80px;） */
 }
 
 .hero-img {
@@ -163,55 +155,6 @@ body::before {
     /* ヘッダー画像が背景と自然に混ざるように下部グラデーションマスク処理 */
     mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-    will-change: transform;
-    backface-visibility: hidden;
-}
-
-/* Car sprites for launch animation */
-.cars {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 10;
-}
-
-.car {
-    position: absolute;
-    width: min(22vw, 320px);
-    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.8));
-    transform: translate3d(0, 0, 0) scale(0.9);
-    opacity: 1;
-    visibility: visible;
-    will-change: transform, opacity;
-    backface-visibility: hidden;
-    -webkit-font-smoothing: antialiased;
-}
-
-.car--kin {
-    left: 58%;
-    bottom: 14%;
-}
-
-.car--ou {
-    left: 38%;
-    bottom: 16%;
-}
-
-.car--kyo {
-    left: 18%;
-    bottom: 12%;
-}
-
-.car--kei {
-    left: 8%;
-    bottom: 20%;
-    width: min(18vw, 260px);
-}
-
-.car--hi {
-    right: 6%;
-    bottom: 26%;
-    width: min(18vw, 260px);
 }
 
 /* Section Common Style */
@@ -236,19 +179,13 @@ body::before {
 .view-port {
     overflow: hidden;
     width: 100%;
-    padding: 40px 0;
-    margin: 60px 0;
-    position: relative;
-    min-height: 400px;
-    z-index: 1;
+    padding: 20px 0;
+    margin-right: 20px;
 }
 
 .drive-container {
     display: flex;
     width: max-content;
-    gap: 20px;
-    visibility: visible;
-    opacity: 1;
 }
 
 .drive-container:hover {
@@ -268,19 +205,9 @@ body::before {
 
 .drive-card {
     flex-shrink: 0;
-    width: 280px;
+    width: 200px;
     margin: 0 10px;
-    will-change: transform, opacity;
-    backface-visibility: hidden;
-    background: rgba(0, 0, 10, 0.7);
-    padding: 40px 20px;
-    border-radius: 12px;
-    border: 2px solid #fff;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(5px);
-    text-align: center;
-    visibility: visible;
-    opacity: 1;
+    /* ここにカードのデザイン（背景色や枠線など）を追加 */
 }
 
 /* ポップアップ外枠（背景：画面全体を覆う） */
@@ -344,8 +271,6 @@ body::before {
     box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
     backdrop-filter: blur(3px);
     border-radius: 10px;
-    will-change: transform, opacity;
-    backface-visibility: hidden;
 }
 
 .section p {
@@ -511,10 +436,21 @@ body::before {
     filter: drop-shadow(0 0 8px rgba(0,255,255,0.5));
 }
 
-/* Drive Mode */
-.drive-mode {
-    position: relative;
-    z-index: 1;
+.view-port {
+    width: 100%;
+    padding: 20px 0;
+    margin-top: 50px;
+}
+
+.drive-card {
+    width: 320px;
+    background: rgba(0, 0, 10, 0.7);
+    padding: 40px 20px;
+    border-radius: 12px;
+    border: 2px solid #fff;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    text-align: center;
 }
 
 .drive-card:hover {
@@ -581,7 +517,6 @@ body::before {
     justify-content: center;
     align-items: center;
     gap: 100px;
-    flex-wrap: wrap;
 }
 
 .phone-text {
@@ -602,13 +537,38 @@ body::before {
 }
 
 /* Footer Visual */
-.footer-visual {
-    margin-top: 100px;
-}
-.footer-visual img {
+
+footer {
     width: 100%;
-    display: block;
-    /* 下部画像が背景と自然に混ざるようにマスク処理 */
-    mask-image: linear-gradient(to top, black 80%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to top, black 80%, transparent 100%);
+    background-color: rgba(0, 0, 0, 0.7); /* opacityの代わりにrgbaを使う */;
+    position: relative;
+    padding: 30px 20px 0px 20px;
+    z-index: 10;
+}
+.footer-logo {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+.footer-nav {
+    margin-bottom: 20px;
+}
+
+.footer-nav ul {
+    display: flex;
+    justify-content: center;
+    font-family: 'Orbitron', sans-serif;
+    color: #fff;
+    gap: 30px;
+    list-style: none!important;
+}
+.footer-nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: 0.3s;
 }

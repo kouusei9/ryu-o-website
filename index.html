@@ -2,16 +2,13 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1440">
     <title>RYU-O</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-    <!-- GSAP for animations -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 </head>
 
 <body>
@@ -22,14 +19,15 @@
     </div>
     <nav>
         <ul>
-            <li><a href="Introduction.html">Introduction</a></li>
-            <li><a href="#vision">Vision</a></li>
-            <li><a href="#technology">Technology</a></li>
-            <li><a href="#drive-mode">Drive Mode</a></li>
-            <li><a href="#products">Products</a></li>
+            <li><a href="#">ホーム</a></li>
+            <li><a href="#">紹介動画</a></li>
+            <li><a href="#">開発</a></li>
+            <li><a href="#">ブース</a></li>
+            <li><a href="#">審査</a></li>
+            <li><a href="#">当日の会場</a></li>
         </ul>
     </nav>
-</header>
+    </header>
 
     <section class="hero">
         <img src="img/bg-1.jpg" class="hero-img" alt="Hero Visual">
@@ -44,36 +42,36 @@
         </div>
     </section>
 
-    <section class="section intro" id="intro">
+    <section class="section intro">
         <h2 class="neon-text">Introduction</h2>
-        <div class="content-box reveal">
+        <div class="content-box">
             <h3>RYU-Oとは・・・</h3>
             <p>
-                「利便性・自動変形」の融合した未来のモビリティ<br>
-                走行状態の車の姿変化し、自然環境変化に<br>
-                よって変形する車を再現する社会。<br><br>
-                <span class="highlight">誰でも安全に自由に運転できる社会へ</span>
+                日本の伝統文化<span class="highlight">「将棋」</span>と<span class="highlight">「自動運転」</span>を融合した未来のモビリティ<br>
+                道路の状況や目的地までの距離に応じ、<br>
+                車が将棋をモチーフにした４つのモードに変形し、自動で目的地まで<br>
+                誰でも安全に自由に運転できる社会を実現します。
             </p>
         </div>
     </section>
 
-    <section class="section vision" id="vision">
+    <section class="section vision">
         <h2 class="neon-text">Vision</h2>
-        <div class="content-box reveal">
+        <div class="content-box">
             <p>
-                私たちの考える未来の街は<br>
-                自動運転の管理がしやすいように、現在の京都の街並みの<br>
-                碁盤の目のような直線直角で作られており、<br>
-                走る車も自動運転の車両のみなので信号がなく<br>
-                交通事故もなくノンストップで走ることができます。<br>   
+                私たちの考える未来は<br>
+                全ての町が自動運転の管理がしやすいように、現在の京都の街並みの<br>
+                <span class="highlight">碁盤の目のような直線直角で作られており、</span><br>
+                自動運転の車両のみが走り信号もないので<br>
+                <span class="highlight">交通事故もなく目的地までノンストップで走ることができます。</span><br>   
             </p>
         </div>
     </section>
 
-    <section class="section technology" id="technology">
+    <section class="section technology">
         <h2 class="neon-text">Technology</h2>
 
-        <div class="tech-container reveal">
+        <div class="tech-container">
             <div class="tech-row">
                 <!-- <div class="tech-left tech-images">
                     <img src="img/tech1.png" alt="Tech 1">
@@ -84,8 +82,9 @@
                     <div class="tech-line"></div>
                     <p>
                         将棋をモチーフにした4つのモード<br>
-                        走行状況に応じた最適なモード変形を実現<br>
-                        自動運転を日常へ
+                        通常運転の金将モード、高速運転の香車モード、<br>
+                        短距離飛行の桂馬モード、長距離飛行の飛車モード<br>
+                        走行状況に応じた最適なモード変形を実現
                     </p>
                 </div>
 
@@ -95,12 +94,6 @@
                 </div> -->
             </div>
         </div>
-    </section>
-
-    <section class="section drive-mode" id="drive-mode">
-        <h2 class="neon-text">Drive Mode</h2>
-
-        <!--横に流れる-->
         <div class="view-port">
             <div class="drive-container" id="loop-container">
                 <div class="drive-card mode-cyan" data-img="img/Image1.jpg">
@@ -134,10 +127,10 @@
         </div>
     </section>
 
-    <section class="section products" id="products">
+    <section class="section products">
         <h2 class="neon-text">Products</h2>
 
-        <div class="tech-container city-run reveal">
+        <div class="tech-container city-run">
             <div class="tech-row">
                 
                 <div class="tech-text">
@@ -160,7 +153,7 @@
             </div>
         </div>
 
-        <div class="tech-container reveal">
+        <div class="tech-container">
             <div class="tech-row">
                 
                 <div class="tech-text">
@@ -182,171 +175,24 @@
         </div>
     </section>
 
-    <section class="footer-visual">
-        <img src="img/footer.png" alt="Footer">
-    </section>
-
-    <!-- =============== GSAP ANIMATIONS =============== -->
-    <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            // Check if GSAP is loaded
-            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-                console.error('GSAP or ScrollTrigger not loaded!');
-                return;
-            }
-            
-            console.log('✅ GSAP loaded successfully');
-            gsap.registerPlugin(ScrollTrigger);
-            
-            // Debug: Check if drive cards exist
-            const driveCards = document.querySelectorAll('.drive-card');
-            console.log('🎴 Found drive cards:', driveCards.length);
-            driveCards.forEach((card, i) => {
-                console.log(`Card ${i}:`, {
-                    display: window.getComputedStyle(card).display,
-                    opacity: window.getComputedStyle(card).opacity,
-                    visibility: window.getComputedStyle(card).visibility
-                });
-            });
-            
-            // Set initial state for cars
-            gsap.set('.car', { 
-                opacity: 1,
-                visibility: 'visible'
-            });
-            
-            // Set initial state for drive cards to ensure they're visible
-            gsap.set('.drive-card', { 
-                opacity: 1,
-                visibility: 'visible',
-                x: 0
-            });
-
-            // ===== CAR LAUNCH ANIMATION =====
-            const carTimeline = gsap.timeline({
-                scrollTrigger: {
-                    trigger: '.hero',
-                    start: 'top top',
-                    end: '+=2000',
-                    scrub: 0.5,
-                    pin: true,
-                    anticipatePin: 1,
-                    markers: false
-                }
-            });
-
-            // Define car launch animations
-            const cars = [
-                { sel: '.car--ou',  x: 0,    y: -900, s: 1.9, r: 2 },
-                { sel: '.car--kin', x: 220,  y: -820, s: 1.8, r: -3 },
-                { sel: '.car--kyo', x: -260, y: -760, s: 1.7, r: 3 },
-                { sel: '.car--kei', x: -120, y: -700, s: 1.6, r: -6 },
-                { sel: '.car--hi',  x: 180,  y: -680, s: 1.5, r: 5 },
-            ];
-
-            cars.forEach((c, i) => {
-                carTimeline.to(c.sel, {
-                    x: c.x,
-                    y: c.y,
-                    scale: c.s,
-                    rotate: c.r,
-                    filter: 'drop-shadow(0 30px 60px rgba(0,0,0,.9))',
-                    ease: 'power2.out',
-                    force3D: true
-                }, i * 0.12);
-            });
-
-            // Hero title fade out during launch
-            carTimeline.to('.nav', {
-                opacity: 0.3,
-                ease: 'power1.out'
-            }, 0.1);
-
-            // ===== REVEAL ANIMATIONS on scroll =====
-            gsap.utils.toArray('.reveal').forEach((el) => {
-                gsap.from(el, {
-                    scrollTrigger: {
-                        trigger: el,
-                        start: 'top 85%',
-                        end: 'top 50%',
-                        toggleActions: 'play none none reverse'
-                    },
-                    y: 40,
-                    opacity: 0,
-                    duration: 1,
-                    ease: 'power3.out',
-                    force3D: true
-                });
-            });
-
-            // ===== HERO IMAGE PARALLAX =====
-            gsap.to('.hero-img', {
-                scrollTrigger: {
-                    trigger: '.hero',
-                    start: 'top top',
-                    end: 'bottom top',
-                    scrub: 0.5
-                },
-                y: 150,
-                ease: 'none',
-                force3D: true
-            });
-
-            // ===== SECTION TITLES ANIMATION =====
-            gsap.utils.toArray('.neon-text').forEach((title) => {
-                gsap.from(title, {
-                    scrollTrigger: {
-                        trigger: title,
-                        start: 'top 85%',
-                        toggleActions: 'play none none none'
-                    },
-                    scale: 0.95,
-                    opacity: 0,
-                    duration: 0.9,
-                    ease: 'power3.out',
-                    force3D: true
-                });
-            });
-
-            // Drive cards are now always visible - no animation needed
-            console.log('✅ Drive cards are set to be always visible');
-
-            // ===== SMOOTH SCROLL FOR NAVIGATION =====
-            document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetSection = document.querySelector(targetId);
-                    
-                    if (targetSection) {
-                        const navHeight = document.querySelector('.nav').offsetHeight;
-                        // Add extra offset to center the content better (accounting for section padding)
-                        const extraOffset = 80; // Adjust this value to fine-tune positioning
-                        const targetPosition = targetSection.offsetTop - navHeight - extraOffset;
-                        
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            // ===== FOOTER VISUAL FADE IN =====
-            gsap.from('.footer-visual img', {
-                scrollTrigger: {
-                    trigger: '.footer-visual',
-                    start: 'top 80%',
-                    toggleActions: 'play none none none'
-                },
-                opacity: 0,
-                scale: 0.98,
-                duration: 1.2,
-                ease: 'power3.out',
-                force3D: true
-            });
-        });
-    </script>
+    <footer>
+        <div class="footer-logo">
+            <img src="img/logo.png" alt="RYU-O Logo" class="logo-img">
+        </div>
+        <div class="footer-nav">
+            <nav>
+                <ul>
+                    <li><a href="#">ホーム</a></li>
+                    <li><a href="#">紹介動画</a></li>
+                    <li><a href="#">開発</a></li>
+                    <li><a href="#">ブース</a></li>
+                    <li><a href="#">審査</a></li>
+                    <li><a href="#">当日の会場</a></li>
+                </ul>
+            </nav>
+        </div>
+        <p>&copy; 2026 RYU-O. All rights reserved.</p>
+    </footer>
 
 </body>
 </html>
