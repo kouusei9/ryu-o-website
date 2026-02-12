@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>紹介動画 — Ryu-O Website</title>
+	<link rel="stylesheet" href="styles.css">
+	<!-- movie.html 専用のスタイルは以下に追加してください。styles.css を上書きするため、こちらを後に読み込みます -->
+	<link rel="stylesheet" href="mv_styles.css">
+</head>
+<body>
+	<header class="site-header">
+		<h1 class="site-title">紹介動画</h1>
+		<p class="site-subtitle">Ryu-O Website の紹介</p>
+	</header>
+	<main class="content">
+		<section class="video-section">
+			<div class="video-wrapper">
+				<video controls autoplay muted loop playsinline poster="img/poster.jpg" class="intro-video">
+					<source src="img/CM.mp4" type="video/mp4">
+					お使いのブラウザは動画タグに対応していません。
+				</video>
+			</div>
+		</section>
+		<section class="description">
+			<h2>概要</h2>
+			<p>ここに紹介文を入れてください。</p>
+		</section>
+	</main>
+	<footer class="site-footer">
+		<p>&copy; 2026 Ryu-O Website</p>
+	</footer>
+	<!-- 自動再生が阻止された場合に再生を試みるスクリプト（muted により多くのブラウザで自動再生されます） -->
+	<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		const v = document.querySelector('.intro-video');
+		if (!v) return;
+		v.muted = true;
+		const p = v.play();
+		if (p && p.catch) p.catch(() => { /* 自動再生がブロックされた場合は何もしない（ユーザー操作で再生可能） */ });
+	});
+	</script>
+</body>
+</html>
