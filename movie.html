@@ -9,10 +9,26 @@
 	<link rel="stylesheet" href="mv_styles.css">
 </head>
 <body>
-	<header class="site-header">
+	<header class="nav">
+    <div class="nav-logo">
+        <img src="img/logo.png" alt="RYU-O Logo" class="logo-img">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">ホーム</a></li>
+            <li><a href="Introduction.html">企画概要</a></li>
+            <li><a href="movie.html">紹介動画</a></li>
+            <li><a href="develop.html">開発</a></li>
+            <li><a href="booth.html">ブース</a></li>
+            <li><a href="review.html">審査</a></li>
+            <li><a href="#">当日の会場</a></li>
+        </ul>
+    </nav>
+    </header>
+	<div class="site-header">
 		<h1 class="site-title">紹介動画</h1>
 		<p class="site-subtitle">Ryu-O Website の紹介</p>
-	</header>
+	</div>
 	<main class="content">
 		<section class="video-section">
 			<div class="video-wrapper">
@@ -28,9 +44,24 @@
 			<p>近くを通った人に興味を持っていただけるよう、ブース展示の際には左右にこちらの動画を流しました</p>
 		</section>
 	</main>
-	<footer class="site-footer">
-		<p>&copy; 2026 Ryu-O Website</p>
-	</footer>
+	<footer>
+       
+        <div class="footer-nav">
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="footer-link">ホーム</a></li>
+                    <li><a href="Introduction.html">立案</a></li>
+                    <li><a href="movie.html" class="footer-link">紹介動画</a></li>
+                    <li><a href="development.html" class="footer-link">開発</a></li>
+                    <li><a href="booth.html" class="footer-link">ブース</a></li>
+                    <li><a href="review.html" class="footer-link">審査</a></li>
+                    <li><a href="#" class="footer-link">当日の会場</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="copylight">&copy; 2026 RYU-O. All rights reserved.</div>
+    </footer>
+
 	<!-- 自動再生が阻止された場合に再生を試みるスクリプト（muted により多くのブラウザで自動再生されます） -->
 	<script>
 	document.addEventListener('DOMContentLoaded', function () {
