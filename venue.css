@@ -1,0 +1,302 @@
+/* ==================================================
+   Event Venue Intro Section
+   会場紹介（メインビジュアル＋説明）
+================================================== */
+
+/* --- セクション全体の背景と余白 --- */
+.venue-intro {
+    background-color: #0d0d0d; /* 黒基調の背景 */
+    padding: 100px 0;
+    overflow: hidden; /* はみ出し防止 */
+}
+
+/* --- セクションタイトル（当日の会場） --- */
+.neon-text {
+    font-family: 'Orbitron', sans-serif;
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 80px;
+}
+
+/* --- 画像＋説明文の親コンテナ --- */
+.venue-container {
+    position: relative; /* 子要素absolute配置の基準 */
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center; /* 縦方向中央揃え */
+}
+
+/* ==================================================
+   Venue Image Area（左側）
+================================================== */
+
+#about-venue {
+    flex: 0 0 65%;       /* 横幅65% */
+    position: relative; /* ラベル配置の基準 */
+    z-index: 2;         /* 説明ボックスより前面 */
+}
+
+.venue-main-img {
+    width: 100%;
+    height: auto;
+    display: block;
+
+    border: 2px solid #00ffff;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+/* --- 画像内ラベル（国立代々木競技場 など） --- */
+.venue-label {
+    position: absolute;
+    bottom: 5px;     /* 画像下端に固定 */
+    left: 16px;
+
+    padding: 6px 12px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+}
+
+/* ==================================================
+   Venue Description Box（画像に重ねる説明）
+================================================== */
+
+.venue-description {
+    flex: 0 0 50%;
+    margin-left: -15%;     /* 画像に食い込ませる */
+    margin-top: 10rem;
+
+    padding: 3rem 3rem 2rem 13rem;
+
+    background: rgba(30, 30, 30, 0.7);
+    backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+
+    z-index: 1;
+    color: #ffffff;
+}
+
+/* --- 説明ボックス内 見出し --- */
+.venue-heading {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    color: #00ffff;
+    letter-spacing: 0.2em;
+}
+
+/* 見出し下のライン */
+.venue-heading::after {
+    content: "";
+    display: block;
+    width: 170px;
+    height: 2px;
+    background: #00ffff;
+    margin: 5px auto 0;
+    opacity: 0.8;
+}
+
+/* --- 説明文（本文） --- */
+.venue-text {
+    text-align: left;
+    line-height: 1.9;
+    color: #cccccc;
+    font-size: 1rem;
+    margin-bottom: 30px;
+}
+
+/* ==================================================
+   Neon Button（VIEW BOOTH など）
+================================================== */
+
+.neon-button {
+    display: inline-block;
+    padding: 12px 35px;
+
+    border: 2px solid #00ffff;
+    border-radius: 8px;
+
+    color: #ffffff;
+    background: transparent;
+    text-decoration: none;
+
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+
+    transition: all 0.3s ease;
+}
+
+.neon-button:hover {
+    background: rgba(0, 255, 255, 0.2);
+    box-shadow: 0 0 15px #00ffff;
+    transform: translateY(-2px);
+}
+
+/* ==================================================
+   Venue Gallery Section
+================================================== */
+
+.venue-gallery {
+    background: radial-gradient(
+        circle at top,
+        #0e0e0e 0%,
+        #050505 70%,
+        #000 100%
+    );
+    padding: 120px 0 140px;
+}
+
+/* --- ギャラリーヘッダー --- */
+.gallery-header {
+    max-width: 1400px;
+    margin: 0 auto 50px;
+    padding: 0 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gallery-title {
+    font-size: 1.3rem;
+    color: #00ffff;
+    letter-spacing: 0.15em;
+    text-shadow: 0 0 6px rgba(0, 255, 255, 0.5);
+}
+
+.gallery-date {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.15em;
+}
+
+/* --- ギャラリーグリッド --- */
+.gallery-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+}
+
+/* --- 各ギャラリーアイテム --- */
+.gallery-item {
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 10px;
+    overflow: hidden;
+    background: #000;
+
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    box-shadow:
+        0 0 0 1px rgba(0, 255, 255, 0.15),
+        0 0 25px rgba(0, 255, 255, 0.12);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* クリックできることを示すカーソル */
+img.clickable {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+img.clickable:hover {
+    transform: scale(1.03); /* 少し拡大して視覚的強調 */
+}
+
+/* --- キャプション（画像下） --- */
+.gallery-item figcaption {
+    padding: 12px 16px;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    color: #ffffff;
+}
+
+/* --- hover演出 --- */
+.gallery-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 35px rgba(0, 255, 255, 0.35);
+}
+
+/* ===============================
+   Image Modal
+================================ */
+
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+}
+
+.image-modal img {
+    max-width: 85%;
+    max-height: 85%;
+    border-radius: 10px;
+    box-shadow: 0 0 40px rgba(0,255,255,0.4);
+}
+
+/* Sub Image */
+.modal-sub-img {
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    width: 140px;
+    height: auto;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.6);
+    box-shadow: 0 0 15px rgba(0,0,0,0.8);
+    opacity: 0.9;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.modal-sub-img:hover {
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+/* Sub Mode */
+#modal-img.is-sub {
+    width: auto;
+    height: auto;
+    max-width: 90vw;
+    max-height: 90vh;
+    background: #000;
+    padding: 8px;
+}
+
+/* Close Button */
+.modal-close {
+    position: absolute;
+    top: 40px;
+    right: 60px;
+    font-size: 40px;
+    color: #fff;
+    cursor: pointer;
+}

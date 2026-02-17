@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1440">
+    <title>RYU-O</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="venue.css">
+    <script src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="nav">
+    <div class="nav-logo">
+        <img src="img/logo.png" alt="RYU-O Logo" class="logo-img">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">ホーム</a></li>
+            <li><a href="Introduction.html">立案</a></li>
+            <li><a href="movie.html">紹介動画</a></li>
+            <li><a href="develop.html">開発</a></li>
+            <li><a href="booth.html">ブース</a></li>
+            <li><a href="review.html">審査</a></li>
+            <li><a href="venue.html">当日の会場</a></li>
+        </ul>
+    </nav>
+    </header>
+
+    <section class="hero">
+        <img src="img/hero.png" class="hero-img" alt="Hero Visual">
+        
+        <!-- Car sprites for launch animation -->
+        <!-- <div class="cars" aria-hidden="true">
+            <img class="car car--kyo" src="img/car-kyo.png" alt="香車 / KYOSHA" />
+            <img class="car car--ou"  src="img/car-ou.png"  alt="王 / OU" />
+            <img class="car car--kin" src="img/car-kin.png" alt="金 / KIN" />
+            <img class="car car--kei" src="img/car-kei.png" alt="桂馬 / KEIMA" />
+            <img class="car car--hi"  src="img/car-hi.png"  alt="飛 / HI" />
+        </div> -->
+    </section>
+
+    <section class="section venue-intro">
+        <h2 class="neon-text">当日の会場</h2>
+        
+        <div class="venue-container">
+            <div id="about-venue">
+                <img src="img/venueimg/yoyogidaiichi.jpg" alt="会場風景" class="venue-main-img">
+                <div class="venue-label">国立代々木競技場</div>
+            </div>
+
+            <div class="venue-description">
+                <h3 class="venue-heading">未来創造展とは</h3>
+                <p class="venue-text">
+                    「未来創造展2026」は、HALとモード学園の最高学年による「創造力の集大成」。卒業制作・発表をする、IT、デジタルコンテンツ、ファッション、ビジュアルの祭典です。趣向を凝らしたファッションデザインやヘア・メイクのアイデア、最先端の技術を用いたオリジナルゲームやサービスの提案など、学びの集大成を体感してください。
+                </p>
+                
+                <p class="view-more">
+                    <a href="booth.html" class="neon-button">VIEW BOOTH</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section venue-gallery">
+
+        <div class="gallery-header">
+            <h3 class="gallery-title">当日の会場</h3>
+            <span class="gallery-date">未来創造展 – Jan 2026</span>
+        </div>
+
+        <div class="gallery-grid">
+
+            <!-- 1. 開催日パネル -->
+            <figure class="gallery-item">
+                <img src="img/venueimg/panel.jpg" alt="開催日パネル" class="clickable">
+                <figcaption>開催日パネル</figcaption>
+            </figure>
+
+            <!-- 2. キッチンカー -->
+            <figure class="gallery-item">
+                <img src="img/venueimg/kitchencar.jpg" alt="キッチンカー" class="clickable">
+                <figcaption>会場外のキッチンカー</figcaption>
+            </figure>
+
+            <!-- 3. パフォーマンス -->
+            <figure class="gallery-item">
+                <img src="img/venueimg/performance.jpg" alt="パフォーマンスショー" class="clickable">
+                <figcaption>会場内パフォーマンス</figcaption>
+            </figure>
+
+            <!-- 4. ブース周辺 -->
+            <figure class="gallery-item">
+                <img src="img/venueimg/booth.jpg" alt="ブース周りの様子" class="clickable">
+                <figcaption>ブース周辺の賑わい</figcaption>
+            </figure>
+
+        </div>
+
+    </section>
+
+    <footer>
+       
+        <div class="footer-nav">
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="footer-link">ホーム</a></li>
+                    <li><a href="Introduction.html">立案</a></li>
+                    <li><a href="movie.html" class="footer-link">紹介動画</a></li>
+                    <li><a href="development.html" class="footer-link">開発</a></li>
+                    <li><a href="booth.html" class="footer-link">ブース</a></li>
+                    <li><a href="review.html" class="footer-link">審査</a></li>
+                    <li><a href="venue.html" class="footer-link">当日の会場</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="copylight">&copy; 2026 RYU-O. All rights reserved.</div>
+    </footer>
+
+    <!-- Image Modal -->
+    <div id="image-modal" class="image-modal">
+    <span class="modal-close">&times;</span>
+
+    <!-- メイン表示画像 -->
+    <img class="modal-content" id="modal-img">
+
+    <!-- サブ画像（右下表示） -->
+    <img
+        class="modal-sub-img"
+        id="modal-sub-img"
+        src="img/venueimg/cow_kitchencar.jpg"
+        alt="X キッチンカー"
+    >
+    </div>
+
+    <script src="venue.js"></script>
+</body>
+</html>
