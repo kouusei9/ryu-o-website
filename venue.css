@@ -23,10 +23,10 @@
 /* --- 画像＋説明文の親コンテナ --- */
 .venue-container {
     position: relative; /* 子要素absolute配置の基準 */
-    max-width: 1200px;
+    
     margin: 0 auto;
     display: flex;
-    align-items: center; /* 縦方向中央揃え */
+    align-items: flex-start;
 }
 
 /* ==================================================
@@ -71,9 +71,9 @@
 .venue-description {
     flex: 0 0 50%;
     margin-left: -15%;     /* 画像に食い込ませる */
-    margin-top: 10rem;
+    margin-top: 5rem;
 
-    padding: 3rem 3rem 2rem 13rem;
+    padding: 3rem 3rem 2rem 16rem;
 
     background: rgba(30, 30, 30, 0.7);
     backdrop-filter: blur(10px);
