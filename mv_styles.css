@@ -78,3 +78,12 @@
 	.video-caption { text-align: center; }
 }
 
+/* メインページ用style.cssを流用、動画解説用に修正 */
+.description {
+	padding : 20px 24px 20px 24px;
+}
+
+.phone-text {
+	padding : 0;
+	margin : 0;
+}
