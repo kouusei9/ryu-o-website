@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="ja">
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
@@ -8,27 +9,34 @@
 	<!-- movie.html 専用のスタイルは以下に追加してください。styles.css を上書きするため、こちらを後に読み込みます -->
 	<link rel="stylesheet" href="mv_styles.css">
 </head>
+
 <body>
 	<header class="nav">
-    <div class="nav-logo">
-        <img src="img/logo.png" alt="RYU-O Logo" class="logo-img">
-    </div>
-    <nav>
-        <ul>
-            <li><a href="index.html">ホーム</a></li>
-            <li><a href="Introduction.html">企画概要</a></li>
-            <li><a href="movie.html">紹介動画</a></li>
-            <li><a href="develop.html">開発</a></li>
-            <li><a href="booth.html">ブース</a></li>
-            <li><a href="review.html">審査</a></li>
-			<li><a href="venue.html">当日の会場</a></li>
-        </ul>
-    </nav>
-    </header>
+		<div class="nav-logo">
+			<img src="img/logo.png" alt="RYU-O Logo" class="logo-img">
+		</div>
+		<nav>
+			<ul>
+				<li><a href="index.html">ホーム</a></li>
+				<li><a href="Introduction.html">企画概要</a></li>
+				<li><a href="movie.html">紹介動画</a></li>
+				<li><a href="develop.html">開発</a></li>
+				<li><a href="booth.html">ブース</a></li>
+				<li><a href="review.html">審査</a></li>
+				<li><a href="venue.html">当日の会場</a></li>
+			</ul>
+		</nav>
+	</header>
 	<div class="site-header">
 		<h1 class="site-title">紹介動画</h1>
 		<p class="site-subtitle">Ryu-O Website の紹介</p>
 	</div>
+	<section class="section" style="padding-bottom: 0px; ">
+		<h3
+			style="font-family: 'Bebas Neue'; font-size: clamp(2.5rem, 5vw, 3.8rem); letter-spacing: 8px; color: var(--neon-cyan); margin-bottom: 0px; text-shadow: 0 0 20px rgba(60,247,255,0.3); color: #3cf7ff;">
+			紹介動画
+		</h3>
+	</section>
 	<main class="content">
 		<section class="video-section">
 			<div class="video-wrapper">
@@ -54,32 +62,33 @@
 		</section>
 	</main>
 	<footer>
-       
-        <div class="footer-nav">
-            <nav>
-                <ul>
-                    <li><a href="index.html" class="footer-link">ホーム</a></li>
-                    <li><a href="Introduction.html">企画概要</a></li>
-                    <li><a href="movie.html" class="footer-link">紹介動画</a></li>
-                    <li><a href="develop.html" class="footer-link">開発</a></li>
-                    <li><a href="booth.html" class="footer-link">ブース</a></li>
-                    <li><a href="review.html" class="footer-link">審査</a></li>
+
+		<div class="footer-nav">
+			<nav>
+				<ul>
+					<li><a href="index.html" class="footer-link">ホーム</a></li>
+					<li><a href="Introduction.html">企画概要</a></li>
+					<li><a href="movie.html" class="footer-link">紹介動画</a></li>
+					<li><a href="develop.html" class="footer-link">開発</a></li>
+					<li><a href="booth.html" class="footer-link">ブース</a></li>
+					<li><a href="review.html" class="footer-link">審査</a></li>
 					<li><a href="venue.html" class="footer-link">当日の会場</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="copylight">&copy; 2026 RYU-O. All rights reserved.</div>
-    </footer>
+				</ul>
+			</nav>
+		</div>
+		<div class="copylight">&copy; 2026 RYU-O. All rights reserved.</div>
+	</footer>
 
 	<!-- 自動再生が阻止された場合に再生を試みるスクリプト（muted により多くのブラウザで自動再生されます） -->
 	<script>
-	document.addEventListener('DOMContentLoaded', function () {
-		const v = document.querySelector('.intro-video');
-		if (!v) return;
-		v.muted = true;
-		const p = v.play();
-		if (p && p.catch) p.catch(() => { /* 自動再生がブロックされた場合は何もしない（ユーザー操作で再生可能） */ });
-	});
+		document.addEventListener('DOMContentLoaded', function () {
+			const v = document.querySelector('.intro-video');
+			if (!v) return;
+			v.muted = true;
+			const p = v.play();
+			if (p && p.catch) p.catch(() => { /* 自動再生がブロックされた場合は何もしない（ユーザー操作で再生可能） */ });
+		});
 	</script>
 </body>
+
 </html>
